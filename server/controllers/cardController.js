@@ -26,6 +26,7 @@ export const fetchCardByID = async(req, res) => {
 
 export const updateCardByID = async(req, res) => {
     const id = req.params.id
+    console.log(req.body)
     await Card.findByIdAndUpdate(id, req.body, {new: true})
     await res.status(201).json({redirect: `/card/${id}`})
 }
