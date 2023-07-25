@@ -12,7 +12,7 @@ export const createCard = async(req, res) => {
     card.image = cardName
     try {
         await Card.create(card)
-        await res.status(201).json({redirect: '/'})
+        await res.status(201).redirect('/')
     } catch (err) {
         res.status(404).json({message: err.message})
     }

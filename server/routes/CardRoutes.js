@@ -19,10 +19,10 @@ router.get('/', cardController.fetchAllCards)
 
 router.post('/', upload.single('image'), cardController.createCard)
 
-router.get('/card/:id', cardController.fetchCardByID)
+router.get('/:id', cardController.fetchCardByID)
 
-router.patch('/card/:id', cardController.updateCardByID)
+router.patch('/:id', cardController.updateCardByID)
 
-router.delete('/card/:id', cardController.deleteCard)
+router.delete('/:id', cardController.deleteCard)
 
 export default router;

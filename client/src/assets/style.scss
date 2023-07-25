@@ -1,3 +1,17 @@
 @import 'bootstrap/scss/bootstrap.scss';
 $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
 @import "bootstrap-icons/font/bootstrap-icons.scss";
+
+#offcanvasMenu {
+    width: 300px;
+    .offcanvas-body {
+        ul.navbar-nav {
+            li.nav-item {
+                &:hover {
+                    background-color: $gray-300;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}

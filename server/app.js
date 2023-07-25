@@ -15,10 +15,14 @@ app.use(express.json())
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         app.listen(PORT)
+        console.log('server listening in port ' + PORT)
     })
     .catch(err => {
         console.log(err)
     })
 
+app.get('/', async (req, res) => {
+    await res.redirect('/cards')
+})
 
-app.use('/', router)
+app.use('/cards', router)

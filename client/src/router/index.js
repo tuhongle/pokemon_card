@@ -18,6 +18,18 @@ const router = createRouter({
       path: '/add-card',
       name: 'addCard',
       component: () => import('../views/AddCardView.vue')
+    },
+    {
+      path: '/card/:id',
+      name: 'CardDetail',
+      component: () => import('../views/CardDetailView.vue'),
+      props: true
+    },
+    {
+      path: '/edit-card/:id',
+      name: 'EditCard',
+      component: () => import('../views/EditCardView.vue'),
+      props: true
     }
   ]
 })
