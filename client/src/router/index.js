@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
     {
       path: '/about',
@@ -17,7 +17,8 @@ const router = createRouter({
     {
       path: '/add-card',
       name: 'addCard',
-      component: () => import('../views/AddCardView.vue')
+      component: () => import('../views/AddCardView.vue'),
+      props: true
     },
     {
       path: '/card/:id',

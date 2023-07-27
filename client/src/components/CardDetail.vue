@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid my-5">
-        <!-- <h1>{{ id }}</h1> -->
         <div class="row">
             <div class="col-lg-9 col-12 mx-auto">
                 <div class="card shadow">
@@ -27,8 +26,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
+const Router = useRouter();
 const props = defineProps(['id']);
 
 const serverURL = 'http://localhost:5001/';
@@ -41,6 +41,7 @@ const result = await fetch(urlEndpoint, {
 card.value = await result.json();
 
 const deleteCard = async () => {
+    Router.push({ name: 'home', state: { delmsg: 'Card deleted successfully!'}})
     const result = await fetch(urlEndpoint, {
         method: 'DELETE'
     });

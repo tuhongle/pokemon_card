@@ -1,5 +1,14 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+const searchInput = ref(false);
+const Router = useRouter();
+const search = ref('');
+
+const searchFunc = () => {
+  Router.push({ name: 'home', force: true, state: {input: search.value }})
+  window.location.reload();
+}
 </script>
 
 <template>
@@ -15,8 +24,8 @@ import { RouterLink, RouterView } from 'vue-router'
           </div>
           <div class="d-flex align-items-center me-4">
             <i class="bi bi-heart-fill text-secondary fs-4 me-4"></i>
-            <input v-if="false" type="text" class="form-control shadow-none border-bottom-1 me-4" placeholder="Search...">
-            <i class="bi bi-search text-secondary fs-4"></i>
+            <input v-if="searchInput" type="text" class="form-control shadow-none border-bottom-1 me-4" placeholder="Search..." v-model="search" @keydown.enter="searchFunc">
+            <button class="btn bg-transparent shadow-none border-0 p-0" @click="searchInput = !searchInput"><i class="bi bi-search text-secondary fs-4"></i></button>
           </div>
         </div>
       </nav>

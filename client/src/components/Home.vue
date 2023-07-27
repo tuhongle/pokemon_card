@@ -20,19 +20,28 @@
 </template>
   
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 // const port = process.env.PORT || 3000;
 const serverURL = 'http://localhost:5001/';
+const props = defineProps(['search']);
 const cards = ref([]);
 
 const urlEndpoint = '/cards';
 
-const response = await fetch(urlEndpoint, {
+const response = await fetch(urlEndpoint + '?' + new URLSearchParams({
+  title: props.search
+}), {
   method: 'GET',
   mode: 'no-cors'
 });
 cards.value = await response.json();
+
+const cardList = computed(() => {
+  return cards.value.map(el => {
+    return el.title
+  })
+})
 
 </script>
   

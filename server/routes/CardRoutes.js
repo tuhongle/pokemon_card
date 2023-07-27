@@ -21,6 +21,8 @@ router.post('/', upload.single('image'), cardController.createCard)
 
 router.get('/:id', cardController.fetchCardByID)
 
+router.put('/:id', upload.single('image'), cardController.updateImageCard)
+
 router.patch('/:id', cardController.updateCardByID)
 
 router.delete('/:id', cardController.deleteCard)

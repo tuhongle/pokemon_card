@@ -7,7 +7,7 @@
                             <h3 class="fw-bold">Add New Card</h3>
                         </div>
                         <div class="card-body p-4">
-                            <form action="/cards" method="POST" enctype="multipart/form-data">
+                            <form action="/cards" method="POST" ref="form" enctype="multipart/form-data">
                                 <label class="d-flex align-items-center mb-5">
                                     <i class="bi bi-file-earmark-fill fs-3 me-3 text-secondary"></i>
                                     <input type="text" class="form-control" name="title" placeholder="Title" required>
@@ -24,7 +24,7 @@
                                     <i class="bi bi-images fs-3 me-3 text-secondary"></i>
                                     <input type="file" class="form-control" name="image" placeholder="File Input" required>
                                 </label>
-                                <button class="btn btn-primary btn-block btn-lg" type="submit">ADD CARD</button>
+                                <button class="btn btn-primary btn-block btn-lg" type="submit" @click="onSubmit">ADD CARD</button>
                             </form>
                         </div>
                     </div>
@@ -34,5 +34,14 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const Router = useRouter();
+const form = ref(null);
+
+const onSubmit = () => {
+    Router.push({name: 'home', force: true, state: {msg: "Card Created Successfully"}})
+    form.value.submit()
+}
 
 </script>

@@ -5,5 +5,5 @@
 </template>
 
 <script setup>
-    import AddCard from '../components/AddCard.vue';
+    import AddCard from '../components/AddCard.vue'
 </script>
